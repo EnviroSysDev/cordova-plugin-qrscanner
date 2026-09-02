@@ -1,5 +1,6 @@
 import Foundation
 import AVFoundation
+import WebKit
 
 @objc(QRScanner)
 class QRScanner : CDVPlugin, AVCaptureMetadataOutputObjectsDelegate {
@@ -293,7 +294,7 @@ class QRScanner : CDVPlugin, AVCaptureMetadataOutputObjectsDelegate {
     @objc func show(_ command: CDVInvokedUrlCommand) {
         self.webView?.isOpaque = false
         self.webView?.backgroundColor = UIColor.clear
-        self.webView?.scrollView.backgroundColor = UIColor.clear
+        (self.webView as? WKWebView)?.scrollView.backgroundColor = UIColor.clear
         self.getStatus(command)
     }
 
